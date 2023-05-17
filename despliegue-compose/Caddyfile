@@ -1,0 +1,17 @@
+http://127.0.0.1
+
+route /api/v1/notificaciones* {
+        uri strip_prefix /api/v1
+        reverse_proxy notificaciones_mock:4010
+}
+route /api/v1/recambios* {
+        uri strip_prefix /api/v1
+        reverse_proxy recambios_mock:4010
+}
+
+route /notificaciones {
+        redir http://127.0.0.1:8040/
+}
+route /recambios {
+        redir http://127.0.0.1:8060/
+}

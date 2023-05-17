@@ -1,0 +1,66 @@
+version: "3"
+
+services:
+
+  # Proxy que redirige las requests a los mocks
+  proxy:
+    image: caddy:latest
+    container_name: proxy
+    volumes:
+      - ./Caddyfile:/etc/caddy/Caddyfile
+      - ./caddy_data:/data
+    ports:
+      - "80:80"
+    depends_on:
+      - recambios_mock_backend
+      - notificaciones_mock_backend
+    networks:
+      - recambios_net
+      - notificaciones_net
+
+  # Subsistema 4: Notificaciones
+  notificaciones_mock_backend:
+    image: stoplight/prism:4
+    container_name: notificaciones_mock
+    command: mock --cors -h 0.0.0.0 "/notificaciones/openapi.yaml"
+    volumes:
+      - ../servicios/servicio-notificaciones/openapi:/notificaciones:ro
+    networks:
+      - notificaciones_net
+
+  notificaciones_frontend:
+    image: swaggerapi/swagger-ui:latest
+    container_name: notificaciones_ui
+    ports:
+      - "8040:8080"
+    environment:
+      SWAGGER_JSON: /notificaciones/openapi.yaml
+    volumes:
+      - ../servicios/servicio-notificaciones/openapi:/notificaciones:ro
+
+  # Subsistema 6: Recambios
+  recambios_mock_backend:
+    image: stoplight/prism:4
+    container_name: recambios_mock
+    command: mock --cors -h 0.0.0.0 "/recambios/openapi.yaml"
+    volumes:
+      - ../servicios/servicio-recambios/openapi:/recambios:ro
+    networks:
+      - recambios_net
+
+  recambios_frontend:
+    image: swaggerapi/swagger-ui:latest
+    container_name: recambios_ui
+    ports:
+      - "8060:8080"
+    environment:
+      SWAGGER_JSON: /recambios/openapi.yaml
+    volumes:
+      - ../servicios/servicio-recambios/openapi:/recambios:ro
+
+networks:
+  notificaciones_net:
+    driver: bridge
+  recambios_net:
+    driver: bridge
+  

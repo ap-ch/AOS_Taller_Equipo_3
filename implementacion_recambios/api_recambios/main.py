@@ -21,3 +21,12 @@ async def lista_recambios(page: int = 0):
         }
     }
     return recambios
+
+@api_recambios.get('/api/v1/recambios/{numero_serie}')
+async def obtener_recambio(numero_serie: str):
+    recambios_cur = taller["recambios"].find({"Numero_Serie": numero_serie}, {"_id": 0})
+    recambios = {
+        "recambios": [recambio for recambio in recambios_cur],
+    }
+    recambio = {"recambios": recambios}
+    return recambio

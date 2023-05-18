@@ -152,7 +152,7 @@ services:
   logs_mock_backend:
     image: stoplight/prism:4
     container_name: logs_mock
-    command: mock --cors -h 0.0.0.0 "/logs/openapi.yaml"
+    command: mock --cors -h 0.0.0.0 "/logs/openapi.yml"
     volumes:
       - ../servicios/servicio-logs/openapi:/logs:ro
     networks:
@@ -164,7 +164,7 @@ services:
     ports:
      - "8070:8080"
     environment:
-      SWAGGER_JSON: /logs/openapi.yaml
+      SWAGGER_JSON: /logs/openapi.yml
     volumes:
      - ../servicios/servicio-logs/openapi:/logs:ro
 

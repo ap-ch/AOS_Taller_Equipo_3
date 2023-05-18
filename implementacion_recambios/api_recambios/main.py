@@ -3,7 +3,7 @@ from fastapi.exceptions import HTTPException
 from pymongo.mongo_client import MongoClient
 
 api_recambios = FastAPI()
-mongo_client = MongoClient("mongodb://root:root@mongo:27017/")
+mongo_client = MongoClient("mongodb://root:root@recambios_db:27017/")
 taller = mongo_client["taller"]
 
 

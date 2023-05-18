@@ -34,7 +34,7 @@ services:
     container_name: clientes_mock
     command: mock --cors -h 0.0.0.0 "/clientes/openapi.yaml"
     volumes:
-      - ../servicios/servicio-clientes/openapi:/recambios:ro
+      - ../servicios/servicio-clientes/openapi:/clientes:ro
     networks:
       - clientes_net
 
@@ -44,7 +44,7 @@ services:
     ports:
      - "8010:8080"
     environment:
-    SWAGGER_JSON: /clientes/openapi.yaml
+      SWAGGER_JSON: /clientes/openapi.yaml
     volumes:
      - ../servicios/servicio-clientes/openapi:/clientes:ro
 
@@ -54,7 +54,7 @@ services:
     container_name: vehiculos_mock
     command: mock --cors -h 0.0.0.0 "/vehiculos/openapi.yaml"
     volumes:
-      - ../servicios/servicio-vehiculos/openapi:/recambios:ro
+      - ../servicios/servicio-vehiculos/openapi:/vehiculos:ro
     networks:
       - vehiculos_net
 
@@ -64,7 +64,7 @@ services:
     ports:
      - "8020:8080"
     environment:
-    SWAGGER_JSON: /vehiculos/openapi.yaml
+      SWAGGER_JSON: /vehiculos/openapi.yaml
     volumes:
      - ../servicios/servicio-vehiculos/openapi:/vehiculos:ro
 
@@ -74,7 +74,7 @@ services:
     container_name: trabajos_mock
     command: mock --cors -h 0.0.0.0 "/trabajos/openapi.yaml"
     volumes:
-      - ../servicios/servicio-trabajos/openapi:/recambios:ro
+      - ../servicios/servicio-trabajos/openapi:/trabajos:ro
     networks:
       - trabajos_net
 
@@ -84,7 +84,7 @@ services:
     ports:
      - "8030:8080"
     environment:
-    SWAGGER_JSON: /trabajos/openapi.yaml
+      SWAGGER_JSON: /trabajos/openapi.yaml
     volumes:
      - ../servicios/servicio-trabajos/openapi:/trabajos:ro
 
@@ -114,7 +114,7 @@ services:
     container_name: facturas_mock
     command: mock --cors -h 0.0.0.0 "/facturas/openapi.yaml"
     volumes:
-      - ../servicios/servicio-facturas/openapi:/recambios:ro
+      - ../servicios/servicio-facturas/openapi:/facturas:ro
     networks:
       - facturas_net
 
@@ -124,7 +124,7 @@ services:
     ports:
      - "8050:8080"
     environment:
-    SWAGGER_JSON: /facturas/openapi.yaml
+      SWAGGER_JSON: /facturas/openapi.yaml
     volumes:
      - ../servicios/servicio-facturas/openapi:/facturas:ro
 
@@ -154,7 +154,7 @@ services:
     container_name: logs_mock
     command: mock --cors -h 0.0.0.0 "/logs/openapi.yaml"
     volumes:
-      - ../servicios/servicio-logs/openapi:/recambios:ro
+      - ../servicios/servicio-logs/openapi:/logs:ro
     networks:
       - logs_net
 
@@ -164,7 +164,7 @@ services:
     ports:
      - "8070:8080"
     environment:
-    SWAGGER_JSON: /logs/openapi.yaml
+      SWAGGER_JSON: /logs/openapi.yaml
     volumes:
      - ../servicios/servicio-logs/openapi:/logs:ro
 

@@ -12,11 +12,81 @@ services:
     ports:
       - "80:80"
     depends_on:
-      - recambios_mock_backend
+      - clientes_mock_backend
+      - vehiculos_mock_backend
+      - trabajos_mock_backend
       - notificaciones_mock_backend
+      - facturas_mock_backend
+      - recambios_mock_backend
+      - logs_mock_backend
     networks:
-      - recambios_net
+      - clientes_net
+      - vehiculos_net
+      - trabajos_net
       - notificaciones_net
+      - facturas_net
+      - recambios_net
+      - logs_net
+
+  # Subsistema 1: Clientes
+  clientes_mock_backend:
+    image: stoplight/prism:4
+    container_name: clientes_mock
+    command: mock --cors -h 0.0.0.0 "/clientes/openapi.yaml"
+    volumes:
+      - ../servicios/servicio-clientes/openapi:/recambios:ro
+    networks:
+      - clientes_net
+
+  clientes_frontend:
+    image: swaggerapi/swagger-ui:latest
+    container_name: clientes_ui
+    ports:
+     - "8010:8080"
+    environment:
+    SWAGGER_JSON: /clientes/openapi.yaml
+    volumes:
+     - ../servicios/servicio-clientes/openapi:/clientes:ro
+
+  # Subsistema 2: Vehiculos
+  vehiculos_mock_backend:
+    image: stoplight/prism:4
+    container_name: vehiculos_mock
+    command: mock --cors -h 0.0.0.0 "/vehiculos/openapi.yaml"
+    volumes:
+      - ../servicios/servicio-vehiculos/openapi:/recambios:ro
+    networks:
+      - vehiculos_net
+
+  vehiculos_frontend:
+    image: swaggerapi/swagger-ui:latest
+    container_name: vehiculos_ui
+    ports:
+     - "8020:8080"
+    environment:
+    SWAGGER_JSON: /vehiculos/openapi.yaml
+    volumes:
+     - ../servicios/servicio-vehiculos/openapi:/vehiculos:ro
+
+  # Subsistema 3: Trabajos
+  trabajos_mock_backend:
+    image: stoplight/prism:4
+    container_name: trabajos_mock
+    command: mock --cors -h 0.0.0.0 "/trabajos/openapi.yaml"
+    volumes:
+      - ../servicios/servicio-trabajos/openapi:/recambios:ro
+    networks:
+      - trabajos_net
+
+  trabajos_frontend:
+    image: swaggerapi/swagger-ui:latest
+    container_name: trabajos_ui
+    ports:
+     - "8030:8080"
+    environment:
+    SWAGGER_JSON: /trabajos/openapi.yaml
+    volumes:
+     - ../servicios/servicio-trabajos/openapi:/trabajos:ro
 
   # Subsistema 4: Notificaciones
   notificaciones_mock_backend:
@@ -38,6 +108,26 @@ services:
     volumes:
       - ../servicios/servicio-notificaciones/openapi:/notificaciones:ro
 
+  # Subsistema 5: Facturas
+  facturas_mock_backend:
+    image: stoplight/prism:4
+    container_name: facturas_mock
+    command: mock --cors -h 0.0.0.0 "/facturas/openapi.yaml"
+    volumes:
+      - ../servicios/servicio-facturas/openapi:/recambios:ro
+    networks:
+      - facturas_net
+
+  facturas_frontend:
+    image: swaggerapi/swagger-ui:latest
+    container_name: facturas_ui
+    ports:
+     - "8050:8080"
+    environment:
+    SWAGGER_JSON: /facturas/openapi.yaml
+    volumes:
+     - ../servicios/servicio-facturas/openapi:/facturas:ro
+
   # Subsistema 6: Recambios
   recambios_mock_backend:
     image: stoplight/prism:4
@@ -58,9 +148,39 @@ services:
     volumes:
       - ../servicios/servicio-recambios/openapi:/recambios:ro
 
+  # Subsistema 7: Logs
+  logs_mock_backend:
+    image: stoplight/prism:4
+    container_name: logs_mock
+    command: mock --cors -h 0.0.0.0 "/logs/openapi.yaml"
+    volumes:
+      - ../servicios/servicio-logs/openapi:/recambios:ro
+    networks:
+      - logs_net
+
+  logs_frontend:
+    image: swaggerapi/swagger-ui:latest
+    container_name: logs_ui
+    ports:
+     - "8070:8080"
+    environment:
+    SWAGGER_JSON: /logs/openapi.yaml
+    volumes:
+     - ../servicios/servicio-logs/openapi:/logs:ro
+
 networks:
+  clientes_net:
+    driver: bridge
+  vehiculos_net:
+    driver: bridge
+  trabajos_net:
+    driver: bridge
   notificaciones_net:
     driver: bridge
+  facturas_net:
+    driver: bridge
   recambios_net:
+    driver: bridge
+  logs_net:
     driver: bridge
   

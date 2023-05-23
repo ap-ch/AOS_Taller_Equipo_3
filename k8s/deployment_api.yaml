@@ -1,0 +1,26 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: api-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: api
+  template:
+    metadata:
+      labels:
+        app: api
+    spec:
+      containers:
+        - name: api
+          image: api_recambios
+          ports:
+            - containerPort: 8000
+          command: ["uvicorn", "main:api_recambios", "--host", "0.0.0.0", "--reload"]
+          volumeMounts:
+            - name: api-volume
+              mountPath: /usr/src/api
+      volumes:
+        - name: api-volume
+          emptyDir: {}

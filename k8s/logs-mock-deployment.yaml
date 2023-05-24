@@ -17,7 +17,7 @@ spec:
           image: stoplight/prism:4
           command: ["mock", "--cors", "-h", "0.0.0.0", "/logs/openapi.yaml"]
           volumeMounts:
-            - name: logs-backend
+            - name: logs-mock-backend-claim0
               mountPath: /logs
               readOnly: true
       volumes:

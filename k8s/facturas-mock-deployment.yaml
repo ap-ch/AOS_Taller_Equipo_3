@@ -17,7 +17,7 @@ spec:
           image: stoplight/prism:4
           command: ["mock", "--cors", "-h", "0.0.0.0", "/facturas/openapi.yaml"]
           volumeMounts:
-            - name: facturas-backend
+            - name: facturas-mock-backend-claim0
               mountPath: /facturas
               readOnly: true
       volumes:

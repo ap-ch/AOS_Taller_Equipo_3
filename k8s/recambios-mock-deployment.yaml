@@ -17,7 +17,7 @@ spec:
           image: stoplight/prism:4
           command: ["mock", "--cors", "-h", "0.0.0.0", "/recambios/openapi.yaml"]
           volumeMounts:
-            - name: recambios-backend
+            - name: recambios-mock-backend-claim0
               mountPath: /recambios
               readOnly: true
       volumes:

@@ -33,7 +33,7 @@ spec:
             - name: SWAGGER_JSON
               value: /logs/openapi.yaml
           volumeMounts:
-            - name: logs-openapi
+            - name: logs-frontend-pers
               mountPath: /logs
               readOnly: true
       volumes:

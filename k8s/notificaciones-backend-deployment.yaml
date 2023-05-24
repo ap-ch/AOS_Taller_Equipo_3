@@ -17,7 +17,7 @@ spec:
           image: stoplight/prism:4
           command: ["mock", "--cors", "-h", "0.0.0.0", "/notificaciones/openapi.yaml"]
           volumeMounts:
-            - name: notificaciones-backend
+            - name: notificaciones-mock-backend-claim0
               mountPath: /notificaciones
               readOnly: true
       volumes:

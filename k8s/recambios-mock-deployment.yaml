@@ -1,0 +1,27 @@
+apiVersion: apps/v1
+kind: Deployment 
+metadata:
+  name: recambios-backend
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: recambios-backend
+  template:
+    metadata:
+      labels:
+        app: recambios-backend
+    spec:
+      containers:
+        - name: recambios-backend
+          image: stoplight/prism:4
+          command: ["mock", "--cors", "-h", "0.0.0.0", "/recambios/openapi.yaml"]
+          volumeMounts:
+            - name: recambios-backend
+              mountPath: /recambios
+              readOnly: true
+      volumes:
+        - name: recambios-mock-backend-claim0
+          persistentVolumeClaim:
+            claimName: recambios-mock-backend-claim0
+            readOnly: true

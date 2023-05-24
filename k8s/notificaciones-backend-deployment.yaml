@@ -1,0 +1,27 @@
+apiVersion: apps/v1
+kind: Deployment 
+metadata:
+  name: notificaciones-backend
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: notificaciones-backend
+  template:
+    metadata:
+      labels:
+        app: notificaciones-backend
+    spec:
+      containers:
+        - name: notificaciones-backend
+          image: stoplight/prism:4
+          command: ["mock", "--cors", "-h", "0.0.0.0", "/notificaciones/openapi.yaml"]
+          volumeMounts:
+            - name: notificaciones-backend
+              mountPath: /notificaciones
+              readOnly: true
+      volumes:
+        - name: notificaciones-mock-backend-claim0
+          persistentVolumeClaim:
+            claimName: notificaciones-mock-backend-claim0
+            readOnly: true

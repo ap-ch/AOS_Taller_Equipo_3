@@ -14,14 +14,14 @@ spec:
     spec:
       containers:
         - name: recambios-backend
-          image: stoplight/prism:4
-          command: ["mock", "--cors", "-h", "0.0.0.0", "/recambios/openapi.yaml"]
+          image: alejandrochirinos/recambios:latest
+          command: ["uvicorn", "main:api_recambios", "--host", "0.0.0.0", "--reload"]
+        - name: recambios-db
+          image: mongo
           volumeMounts:
-            - name: recambios-mock-volumen
-              mountPath: /recambios
-              readOnly: true
+            - name: recambios-db-volumen
+              mountPath: /data/db
       volumes:
-        - name: recambios-mock-volumen
+        - name: recambios-db-volumen
           persistentVolumeClaim:
-            claimName: recambios-mock-volumen
-            readOnly: true
+            claimName: recambios-db-volumen

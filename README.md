@@ -47,15 +47,6 @@ Antes de nada, se debe clonar el repositorio e ir a la raíz del repositorio loc
 - http://127.0.0.1/recambios
 - http://127.0.0.1/logs
 
-### Interfaz gráfica para las distintas especificaciones
-- http://127.0.0.1/clientes
-- http://127.0.0.1/vehículos
-- http://127.0.0.1/trabajos
-- http://127.0.0.1/notificaciones
-- http://127.0.0.1/facturas
-- http://127.0.0.1/recambios
-- http://127.0.0.1/logs
-
 ### Ejemplos de petición
 ```
 curl --request GET \

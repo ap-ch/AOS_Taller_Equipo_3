@@ -5,7 +5,7 @@ from pymongo.mongo_client import MongoClient
 from models.recambio import Recambio
 
 api_recambios = FastAPI()
-mongo_client = MongoClient("mongodb://root:root@recambios_db:27017/")
+mongo_client = MongoClient("mongodb://root:root@recambios-db:27017/")
 taller = mongo_client["taller"]
 
 # CORSMiddleware para método OPTIONS

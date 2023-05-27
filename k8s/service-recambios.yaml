@@ -33,11 +33,11 @@ spec:
             - name: SWAGGER_JSON
               value: /recambios/openapi.yaml
           volumeMounts:
-            - name: recambios-frontend-pers
+            - name: recambios-frontend-volumen
               mountPath: /recambios
               readOnly: true
       volumes:
-        - name: recambios-frontend-pers
+        - name: recambios-frontend-volumen
           persistentVolumeClaim:
-            claimName: recambios-frontend-pers
+            claimName: recambios-frontend-volumen
             readOnly: true

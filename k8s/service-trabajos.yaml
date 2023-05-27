@@ -33,11 +33,11 @@ spec:
             - name: SWAGGER_JSON
               value: /trabajos/openapi.yaml
           volumeMounts:
-            - name: trabajos-frontend-pers
+            - name: trabajos-frontend-volumen
               mountPath: /trabajos
               readOnly: true
       volumes:
-        - name: trabajos-frontend-pers
+        - name: trabajos-frontend-volumen
           persistentVolumeClaim:
-            claimName: trabajos-frontend-pers
+            claimName: trabajos-frontend-volumen
             readOnly: true

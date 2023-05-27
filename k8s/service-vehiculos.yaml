@@ -33,11 +33,11 @@ spec:
             - name: SWAGGER_JSON
               value: /vehiculos/openapi.yaml
           volumeMounts:
-            - name: vehiculos-frontend-pers
+            - name: vehiculos-frontend-volumen
               mountPath: /vehiculos
               readOnly: true
       volumes:
-        - name: vehiculos-frontend-pers
+        - name: vehiculos-frontend-volumen
           persistentVolumeClaim:
-            claimName: vehiculos-frontend-pers
+            claimName: vehiculos-frontend-volumen
             readOnly: true

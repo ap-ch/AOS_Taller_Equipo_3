@@ -33,11 +33,11 @@ spec:
             - name: SWAGGER_JSON
               value: /notificaciones/openapi.yaml
           volumeMounts:
-            - name: notificaciones-frontend-pers
+            - name: notificaciones-frontend-volumen
               mountPath: /notificaciones
               readOnly: true
       volumes:
-        - name: notificaciones-frontend-pers
+        - name: notificaciones-frontend-volumen
           persistentVolumeClaim:
-            claimName: notificaciones-frontend-pers
+            claimName: notificaciones-frontend-volumen
             readOnly: true

@@ -1,7 +1,7 @@
 apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
-  name: recambios-frontend-pers
+  name: trabajos-mock-volumen
 spec:
   accessModes:
     - ReadOnlyMany

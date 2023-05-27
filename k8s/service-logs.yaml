@@ -33,11 +33,11 @@ spec:
             - name: SWAGGER_JSON
               value: /logs/openapi.yaml
           volumeMounts:
-            - name: logs-frontend-pers
+            - name: logs-frontend-volumen
               mountPath: /logs
               readOnly: true
       volumes:
-        - name: logs-frontend-pers
+        - name: logs-frontend-volumen
           persistentVolumeClaim:
-            claimName: logs-frontend-pers
+            claimName: logs-frontend-volumen
             readOnly: true

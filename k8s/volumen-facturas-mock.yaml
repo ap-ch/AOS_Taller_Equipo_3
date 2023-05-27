@@ -1,7 +1,7 @@
 apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
-  name: facturas-mock-backend-claim0
+  name: facturas-mock-volumen
 spec:
   accessModes:
     - ReadOnlyMany

@@ -1,7 +1,7 @@
 apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
-  name: logs-mock-backend-claim0
+  name: clientes-frontend-volumen
 spec:
   accessModes:
     - ReadOnlyMany

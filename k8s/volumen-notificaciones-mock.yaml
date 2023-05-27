@@ -1,7 +1,7 @@
 apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
-  name: recambios-mock-backend-claim0
+  name: notificaciones-mock-volumen
 spec:
   accessModes:
     - ReadOnlyMany

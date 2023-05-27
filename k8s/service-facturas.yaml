@@ -33,11 +33,11 @@ spec:
             - name: SWAGGER_JSON
               value: /facturas/openapi.yaml
           volumeMounts:
-            - name: facturas-frontend-pers
+            - name: facturas-frontend-volumen
               mountPath: /facturas
               readOnly: true
       volumes:
-        - name: facturas-frontend-pers
+        - name: facturas-frontend-volumen
           persistentVolumeClaim:
-            claimName: facturas-frontend-pers
+            claimName: facturas-frontend-volumen
             readOnly: true

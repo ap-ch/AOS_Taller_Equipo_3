@@ -33,11 +33,11 @@ spec:
             - name: SWAGGER_JSON
               value: /clientes/openapi.yaml
           volumeMounts:
-            - name: clientes-frontend-pers
+            - name: clientes-frontend-volumen
               mountPath: /clientes
               readOnly: true
       volumes:
-        - name: clientes-frontend-pers
+        - name: clientes-frontend-volumen
           persistentVolumeClaim:
-            claimName: clientes-frontend-pers
+            claimName: clientes-frontend-volumen
             readOnly: true

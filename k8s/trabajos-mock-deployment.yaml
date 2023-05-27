@@ -17,11 +17,11 @@ spec:
           image: stoplight/prism:4
           command: ["mock", "--cors", "-h", "0.0.0.0", "/trabajos/openapi.yaml"]
           volumeMounts:
-            - name: trabajos-mock-backend-claim0
+            - name: trabajos-mock-volumen
               mountPath: /trabajos
               readOnly: true
       volumes:
-        - name: trabajos-mock-backend-claim0
+        - name: trabajos-mock-volumen
           persistentVolumeClaim:
-            claimName: trabajos-mock-backend-claim0
+            claimName: trabajos-mock-volumen
             readOnly: true

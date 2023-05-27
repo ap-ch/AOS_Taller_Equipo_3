@@ -1,0 +1,37 @@
+openapi: 3.0.3
+
+info:
+  version: 1.0.0
+  title: 🚗[AOS 2023] Inventario de Recambios del taller 🚗
+  description: >
+    ## 🚘 API REST para la gestión de inventario de taller de coches
+  license:
+    name: MIT
+    url: 'https://opensource.org/licenses/MIT'
+  contact:
+    name: Escuela Técnica Superior de Ingeniería de Sistemas Informaticos
+    url: 'https://www.etsisi.upm.es/'
+    email: webmaster@etsisi.upm.es
+servers:
+  - url: http://127.0.0.1:80/api/v1
+tags:
+  - name: '⚙️Inventario'
+  
+paths:
+  /recambios:
+    $ref: "./paths/recambios.yaml"
+  /recambios/{Numero_Serie}:
+    $ref: "./paths/recambio.yaml"
+components:
+  schemas:
+    $ref: "./schemas/_index.yaml"
+  headers:
+    $ref: "./headers/_index.yaml"
+  parameters:
+    $ref: "./parameters/_index.yaml"
+  requestBodies:
+    $ref: "./requestBodies/_index.yaml"
+  responses:
+    $ref: "./responses/_index.yaml"
+  examples:
+    $ref: "./examples/_index.yaml"

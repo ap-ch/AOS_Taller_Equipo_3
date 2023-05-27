@@ -1,32 +1,31 @@
 http://127.0.0.1
 
-route /api/v1/clientes* {
+route /api/v1/cliente* {
         uri strip_prefix /api/v1
-        reverse_proxy clientes_mock:4010
+        reverse_proxy clientes-mock:4010
 }
 route /api/v1/vehiculos* {
         uri strip_prefix /api/v1
-        reverse_proxy vehiculos_mock:4010
+        reverse_proxy vehiculos-mock:4010
 }
 route /api/v1/trabajos* {
         uri strip_prefix /api/v1
-        reverse_proxy trabajos_mock:4010
+        reverse_proxy trabajos-mock:4010
 }
 route /api/v1/notificaciones* {
         uri strip_prefix /api/v1
-        reverse_proxy notificaciones_mock:4010
+        reverse_proxy notificaciones-mock:4010
 }
 route /api/v1/facturas* {
         uri strip_prefix /api/v1
-        reverse_proxy facturas_mock:4010
+        reverse_proxy facturas-mock:4010
 }
 route /api/v1/recambios* {
-        uri strip_prefix /api/v1
-        reverse_proxy recambios_mock:4010
+        reverse_proxy recambios-api:8000
 }
 route /api/v1/logs* {
         uri strip_prefix /api/v1
-        reverse_proxy logs_mock:4010
+        reverse_proxy logs-mock:4010
 }
 
 route /clientes {
@@ -45,7 +44,7 @@ route /facturas {
         redir http://127.0.0.1:8050/
 }
 route /recambios {
-        redir http://127.0.0.1:8060/
+        redir http://127.0.0.1:4060/docs
 }
 route /logs {
         redir http://127.0.0.1:8070/

@@ -17,6 +17,7 @@ Esta aplicación combina los servicios de la primera práctica:
 - Implementación de la API de Recambios escrita en Python, utilizando:
   - FastAPI
   - MongoDB
+- Imagen Docker de la implementación de la API de Recambios subida a [DockerHub](https://hub.docker.com/r/alejandrochirinos/recambios)
 - Memoria del proyecto
 
 # Requisitos para el despliegue
